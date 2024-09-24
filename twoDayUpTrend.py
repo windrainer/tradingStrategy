@@ -22,7 +22,7 @@ pro = ts.pro_api()
 def retrieve_medium_sized_stock(trade_date):
     # Define market capitalization thresholds for medium-sized stocks (in billion CNY)
     market_cap_min = 10  # Adjust the minimum threshold as needed
-    market_cap_max = 65  # Adjust the maximum threshold as needed
+    market_cap_max = 70  # Adjust the maximum threshold as needed
 
     # Fetch the stock basic information
     stock_info = pro.query('stock_basic', exchange='', list_status='L',
@@ -56,7 +56,7 @@ def has_two_consecutive_up_candles(stock_codes, trade_date_start, trade_date_end
     if df is None or df.empty:
         return np.array([])
 
-        # Calculate the percentage change for each candlestick
+    # Calculate the percentage change for each candlestick
     df['percent_change'] = (df['close'] - df['open']) / df['open'] * 100
 
     # Identify up candlesticks with a 4% to 5% increase
@@ -80,8 +80,8 @@ def split_list(lst, n):
 
 # List of stock codes to check
 # stock_codes = ['000001.SZ', '600519.SH']  # Add more stock codes as needed
-trade_date_start = '20240828'  # Replace with the desired date
-trade_date_end = '20240902'
+trade_date_start = '20240910'  # Replace with the desired date
+trade_date_end = '20240920'
 is_read_api = True
 
 if is_read_api:
